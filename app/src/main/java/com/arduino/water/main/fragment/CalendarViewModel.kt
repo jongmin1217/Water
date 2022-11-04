@@ -69,7 +69,7 @@ class CalendarViewModel : BaseViewModel() {
                 totalPrice.value = priceText
 
                 thisUsage = totalWaterUsage
-                thisPrice = price
+                thisPrice = price.toInt()
             }
 
             if(beforeMonthList.isEmpty()){

@@ -11,14 +11,14 @@ import timber.log.Timber
 
 class WaterApplication : Application() {
 
-    //올림픽 규격
-    val standard = 2000
+    //올림픽 규격 L단위
+    val standard = 3750000
 
     // 1L당 금액
-    val waterPrice = 200
+    val waterPrice = 0.7
 
-    //1인 기준 권장 물 사용량
-    val waterConsumption = 100
+    //1인 기준 권장 물 사용량 L단위
+    val waterConsumption = 183
 
     val shared = SharedPreferenceCtrl()
 

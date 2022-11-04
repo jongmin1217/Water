@@ -6,10 +6,8 @@ import com.arduino.water.base.BaseViewModel
 import com.arduino.water.model.WaterUsageData
 import com.arduino.water.utils.Event
 import com.arduino.water.utils.SingleLiveEvent
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.arduino.water.utils.Utils
+import com.google.firebase.database.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -31,6 +29,8 @@ class MainViewModel : BaseViewModel() {
     fun getWaterUsageData(){
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("waterUsage")
+
+        //testWriteDatabase(myRef)
 
         val gson = GsonBuilder().create()
 
@@ -61,5 +61,42 @@ class MainViewModel : BaseViewModel() {
             }
 
         })
+    }
+
+    //임의로 데이터 베이스 저장하는 함수
+    private fun testWriteDatabase(database : DatabaseReference){
+        val list = ArrayList<WaterUsageData>()
+
+        // 데이터를 넣기 시작하는 달
+        val startMonth = 3
+
+        val nowMonth = Utils.getMonth()
+        val nowDay = Utils.getDay()
+
+        for(i in startMonth..nowMonth){
+
+            val lastDay = when(i){
+                1,3,5,7,8,10,12 -> 31
+                2 -> 28
+                else -> 30
+            }
+
+            for(j in 1..lastDay){
+                if(i == nowMonth && j == nowDay+1) break
+                list.add(
+                    WaterUsageData(
+                        2022,
+                        i,
+                        j,
+                        // 0 ~ 200 랜덤
+                        Random().nextInt(200),
+                        Random().nextInt(200),
+                        Random().nextInt(200)
+                    )
+                )
+            }
+        }
+
+        database.setValue(list)
     }
 }
