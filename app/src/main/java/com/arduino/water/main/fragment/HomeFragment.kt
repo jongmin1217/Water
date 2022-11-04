@@ -96,11 +96,11 @@ class HomeFragment(
     private fun initAdapter(){
         val items = ArrayList<HouseHoldMember>()
         for(i in 1..8){
-            items.add(HouseHoldMember(i==1,i.toString()))
+            items.add(HouseHoldMember(WaterApplication.mInstance.shared.getHouseMember()==i,i.toString()))
         }
 
         val adapter = HouseHoldMemberAdapter{
-            WaterApplication.mInstance.houseMember = it.text.toInt()
+            WaterApplication.mInstance.shared.setHouseMember(it.text.toInt())
             editHouseMember()
         }
 

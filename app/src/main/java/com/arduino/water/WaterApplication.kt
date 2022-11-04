@@ -5,12 +5,11 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.util.Log
 import androidx.annotation.NonNull
+import com.arduino.water.utils.SharedPreferenceCtrl
 import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 
 class WaterApplication : Application() {
-
-    var houseMember = 1
 
     //올림픽 규격
     val standard = 2000
@@ -20,6 +19,8 @@ class WaterApplication : Application() {
 
     //1인 기준 권장 물 사용량
     val waterConsumption = 100
+
+    val shared = SharedPreferenceCtrl()
 
     companion object {
         lateinit var mInstance: WaterApplication
@@ -34,7 +35,7 @@ class WaterApplication : Application() {
         mInstance = this
 
         setUpTimber()
-
+        shared.init(this)
     }
 
     private fun setUpTimber(){

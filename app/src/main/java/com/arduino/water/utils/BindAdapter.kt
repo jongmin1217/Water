@@ -70,7 +70,7 @@ object BindAdapter {
     @JvmStatic
     fun setCalendarColor(layout: ConstraintLayout, totalWater: Int) {
 
-        val memberUsing = WaterApplication.mInstance.waterConsumption * WaterApplication.mInstance.houseMember
+        val memberUsing = WaterApplication.mInstance.waterConsumption * WaterApplication.mInstance.shared.getHouseMember()
 
         when{
             totalWater == 0 -> {
