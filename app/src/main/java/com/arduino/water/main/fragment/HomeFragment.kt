@@ -109,6 +109,7 @@ class HomeFragment(
         adapter.items = items
     }
 
+    // 그래프 설정
     fun initChart(waterUsageData : WaterUsageData){
 
         with(binding.pieChart) {

@@ -42,6 +42,7 @@ object BindAdapter {
         }
     }
 
+    // 달력 뷰 타입에 따라 GridLayoutManager 변경
     fun calendarAdapter(recyclerview: RecyclerView, adapter : CalendarAdapter) {
         if(recyclerview.adapter == null){
             if (!adapter.hasObservers()) adapter.setHasStableIds(true)
@@ -66,6 +67,7 @@ object BindAdapter {
         }
     }
 
+    // 색상변경
     @BindingAdapter("setCalendarColor")
     @JvmStatic
     fun setCalendarColor(layout: ConstraintLayout, totalWater: Float) {

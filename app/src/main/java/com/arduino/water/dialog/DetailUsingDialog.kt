@@ -34,15 +34,20 @@ class DetailUsingDialog(
 
         binding.tvGraph1.run {
             postDelayed({
+                // 전체 길이
                 val width = ((binding.tvGraph4.left+binding.tvGraph4.right)/2)-((binding.tvGraph1.left+binding.tvGraph1.right)/2)
-                val kitchenRatio = calendarData.kitchen.toFloat()/calendarData.getMaxValue().toFloat()
-                val laundryRatio = calendarData.laundry.toFloat()/calendarData.getMaxValue().toFloat()
-                val bathRatio = calendarData.bath.toFloat()/calendarData.getMaxValue().toFloat()
 
+                // 값들의 비율
+                val kitchenRatio = calendarData.kitchen/calendarData.getMaxValue().toFloat()
+                val laundryRatio = calendarData.laundry/calendarData.getMaxValue().toFloat()
+                val bathRatio = calendarData.bath/calendarData.getMaxValue().toFloat()
+
+                // 값들의 길이 구하기
                 val kitchenValue = width * kitchenRatio
                 val laundryValue = width * laundryRatio
                 val bathValue = width * bathRatio
 
+                // 뷰에 길이 할당
                 if(kitchenValue == 0F) binding.kitchenValue.visibility = View.GONE
                 else binding.kitchenValue.setWidth(kitchenValue.toInt())
 

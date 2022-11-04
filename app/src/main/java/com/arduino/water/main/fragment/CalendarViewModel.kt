@@ -31,6 +31,8 @@ class CalendarViewModel : BaseViewModel() {
     private val _initCalendar = SingleLiveEvent<ArrayList<CalendarData>>()
     val initCalendar: LiveData<ArrayList<CalendarData>> get() = _initCalendar
 
+
+    //시작
     fun initCalendar(){
         val year = selectYear.value?:0
         val month = selectMonth.value?:0
@@ -43,6 +45,8 @@ class CalendarViewModel : BaseViewModel() {
         ).apply {
             _initCalendar.value = this
 
+
+            // 달력 위 부분
             val dec = DecimalFormat("#,###,###")
 
             val beforeYear = if(month == 1) year -1 else year
@@ -102,6 +106,7 @@ class CalendarViewModel : BaseViewModel() {
     ): ArrayList<CalendarData> {
         val list = ArrayList<CalendarData>()
 
+        // 전 달 부분
         if (startDay != 1) {
             val beforeLastDay = Utils.beforeMonthLastDay(year, month)
             for (i in 0 until startDay - 1) {
@@ -124,6 +129,7 @@ class CalendarViewModel : BaseViewModel() {
             }
         }
 
+        // 현재 달 부분
         for (i in 0 until lastDay) {
             val dayData = data.filter { it.year == year && it.month == month && it.day == (i + 1) }
 
@@ -143,6 +149,7 @@ class CalendarViewModel : BaseViewModel() {
             )
         }
 
+        // 다음 달 부분
         val nextMonthYear = if (month == 12) year + 1 else year
         val nextMonth = if (month == 12) 1 else month + 1
 
@@ -169,6 +176,7 @@ class CalendarViewModel : BaseViewModel() {
             }
         }
 
+        // 바 부분
         for(i in list.size downTo 0){
             if(i%7 == 0 && i!=0 || i == list.size){
 

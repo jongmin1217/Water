@@ -49,6 +49,7 @@ class MainViewModel : BaseViewModel() {
                             override fun run() {
                                 reloading = true
                             }
+                            //delay 시간
                         },5000)
                     }catch (e : Exception){
                         Timber.d("timberMsg onDataChange error $e")
