@@ -56,9 +56,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                         Utils.getYear(),
                         Utils.getMonth(),
                         Utils.getDay(),
-                        0,
-                        0,
-                        0
+                        0F,
+                        0F,
+                        0F
                     )
                 }else nowData[0]
 

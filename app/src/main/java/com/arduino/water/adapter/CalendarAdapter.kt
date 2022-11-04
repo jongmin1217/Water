@@ -62,7 +62,7 @@ class CalendarAdapter(
             binding.model = calendarData
 
             binding.layout.setOnClickListener {
-                if(calendarData.getTotalWater() != 0) click(calendarData)
+                if(calendarData.getTotalWater() != 0F) click(calendarData)
             }
 
         }

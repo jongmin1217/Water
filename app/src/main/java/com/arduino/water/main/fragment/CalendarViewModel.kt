@@ -57,18 +57,18 @@ class CalendarViewModel : BaseViewModel() {
                 totalWater.value = "0L"
                 totalPrice.value = "0원"
             }else{
-                var totalWaterUsage = 0
+                var totalWaterUsage = 0F
                 for(i in thisMonth){
                     val todayTotalWater = i.bath+i.kitchen+i.laundry
                     totalWaterUsage += todayTotalWater
                 }
-                totalWater.value = "${totalWaterUsage}L"
+                totalWater.value = "${totalWaterUsage.toInt()}L"
                 val price = totalWaterUsage * WaterApplication.mInstance.waterPrice
 
                 val priceText = String.format("%s원",dec.format(price))
                 totalPrice.value = priceText
 
-                thisUsage = totalWaterUsage
+                thisUsage = totalWaterUsage.toInt()
                 thisPrice = price.toInt()
             }
 
@@ -76,17 +76,17 @@ class CalendarViewModel : BaseViewModel() {
                 beforeWater.value = "${thisUsage}L 증가"
                 beforePrice.value = String.format("%s원 증가",dec.format(thisPrice))
             }else{
-                var totalWaterUsage = 0
+                var totalWaterUsage = 0F
                 for(i in beforeMonthList){
                     val todayTotalWater = i.bath+i.kitchen+i.laundry
                     totalWaterUsage += todayTotalWater
                 }
                 val waterDifference = thisUsage - totalWaterUsage
-                beforeWater.value = if(waterDifference>=0) "${waterDifference}L 증가"
-                else "${-waterDifference}L 감소"
+                beforeWater.value = if(waterDifference>=0) "${waterDifference.toInt()}L 증가"
+                else "${-waterDifference.toInt()}L 감소"
 
                 val price = totalWaterUsage * WaterApplication.mInstance.waterPrice
-                val priceDifference = thisPrice- price
+                val priceDifference = (thisPrice- price).toInt()
 
                 beforePrice.value = if(priceDifference>=0) String.format("%s원 증가",dec.format(priceDifference))
                 else String.format("%s원 감소",dec.format(-priceDifference))
@@ -114,9 +114,9 @@ class CalendarViewModel : BaseViewModel() {
                         beforeLastDay.year,
                         beforeLastDay.month,
                         beforeLastDay.lastDay - (startDay - i - 2),
-                        if(dayData.isEmpty()) 0 else dayData[0].laundry,
-                        if(dayData.isEmpty()) 0 else dayData[0].bath,
-                        if(dayData.isEmpty()) 0 else dayData[0].kitchen,
+                        if(dayData.isEmpty()) 0F else dayData[0].laundry,
+                        if(dayData.isEmpty()) 0F else dayData[0].bath,
+                        if(dayData.isEmpty()) 0F else dayData[0].kitchen,
                         null,
                         false
                     )
@@ -134,9 +134,9 @@ class CalendarViewModel : BaseViewModel() {
                     year,
                     month,
                     (i + 1),
-                    if(dayData.isEmpty()) 0 else dayData[0].laundry,
-                    if(dayData.isEmpty()) 0 else dayData[0].bath,
-                    if(dayData.isEmpty()) 0 else dayData[0].kitchen,
+                    if(dayData.isEmpty()) 0F else dayData[0].laundry,
+                    if(dayData.isEmpty()) 0F else dayData[0].bath,
+                    if(dayData.isEmpty()) 0F else dayData[0].kitchen,
                     null,
                     true
                 )
@@ -159,9 +159,9 @@ class CalendarViewModel : BaseViewModel() {
                         nextMonthYear,
                         nextMonth,
                         (i+1),
-                        if(dayData.isEmpty()) 0 else dayData[0].laundry,
-                        if(dayData.isEmpty()) 0 else dayData[0].bath,
-                        if(dayData.isEmpty()) 0 else dayData[0].kitchen,
+                        if(dayData.isEmpty()) 0F else dayData[0].laundry,
+                        if(dayData.isEmpty()) 0F else dayData[0].bath,
+                        if(dayData.isEmpty()) 0F else dayData[0].kitchen,
                         null,
                         false
                     )
@@ -172,7 +172,7 @@ class CalendarViewModel : BaseViewModel() {
         for(i in list.size downTo 0){
             if(i%7 == 0 && i!=0 || i == list.size){
 
-                var totalWater = 0
+                var totalWater = 0F
                 for(j in i-1 downTo i-7){
                     totalWater += list[j].getTotalWater()
                 }
@@ -182,8 +182,8 @@ class CalendarViewModel : BaseViewModel() {
                         2,
                         0,
                         0,
-                        0,0,0,0,
-                        totalWater, true
+                        0,0F,0F,0F,
+                        totalWater.toInt(), true
                     )
                 )
             }

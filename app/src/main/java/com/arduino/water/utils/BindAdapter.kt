@@ -68,12 +68,12 @@ object BindAdapter {
 
     @BindingAdapter("setCalendarColor")
     @JvmStatic
-    fun setCalendarColor(layout: ConstraintLayout, totalWater: Int) {
+    fun setCalendarColor(layout: ConstraintLayout, totalWater: Float) {
 
         val memberUsing = WaterApplication.mInstance.waterConsumption * WaterApplication.mInstance.shared.getHouseMember()
 
         when{
-            totalWater == 0 -> {
+            totalWater == 0F -> {
                 layout.setBackgroundColor(WaterApplication.mInstance.resources.getColor(R.color.color_none,null))
             }
 

@@ -8,7 +8,6 @@ class DetailUsingViewModel : BaseViewModel() {
 
     val calendarData = MutableLiveData<CalendarData>().default(null)
 
-    val maxText = MutableLiveData<CalendarData>().default(null)
 
     fun initData(data : CalendarData){
         calendarData.value = data

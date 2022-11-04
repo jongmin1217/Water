@@ -22,6 +22,7 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
 import timber.log.Timber
 import java.text.DecimalFormat
 
@@ -46,7 +47,7 @@ class HomeFragment(
 
         val totalUsage = waterUsageData.laundry+waterUsageData.bath+waterUsageData.kitchen
 
-        val standardCnt = totalUsage.toFloat()/WaterApplication.mInstance.standard.toFloat()
+        val standardCnt = totalUsage/WaterApplication.mInstance.standard.toFloat()
 
         val startText = text.indexOf("을")
         val endText = text.indexOf("번")
@@ -124,7 +125,7 @@ class HomeFragment(
             setCenterTextSize(64f)
             holeRadius = 70f
 
-            val totalUsage = waterUsageData.laundry+waterUsageData.bath+waterUsageData.kitchen
+            val totalUsage = (waterUsageData.laundry+waterUsageData.bath+waterUsageData.kitchen).toInt()
             val price = totalUsage*WaterApplication.mInstance.waterPrice
 
             val dec = DecimalFormat("#,###,###")
@@ -159,14 +160,14 @@ class HomeFragment(
 
             val yValues: ArrayList<PieEntry> = ArrayList()
 
-            if(waterUsageData.bath == 0 && waterUsageData.kitchen==0 && waterUsageData.laundry==0){
+            if(waterUsageData.bath == 0F && waterUsageData.kitchen==0F && waterUsageData.laundry==0F){
                 yValues.add(PieEntry(100F,"목욕"))
                 yValues.add(PieEntry(100F, "주방"))
                 yValues.add(PieEntry(100F, "세탁"))
             }else{
-                if(waterUsageData.bath != 0) yValues.add(PieEntry(waterUsageData.bath.toFloat(),"목욕"))
-                if(waterUsageData.kitchen != 0) yValues.add(PieEntry(waterUsageData.kitchen.toFloat(),"주방"))
-                if(waterUsageData.laundry != 0) yValues.add(PieEntry(waterUsageData.laundry.toFloat(),"세탁"))
+                if(waterUsageData.bath != 0F) yValues.add(PieEntry(waterUsageData.bath,"목욕"))
+                if(waterUsageData.kitchen != 0F) yValues.add(PieEntry(waterUsageData.kitchen,"주방"))
+                if(waterUsageData.laundry != 0F) yValues.add(PieEntry(waterUsageData.laundry,"세탁"))
             }
 
             animateY(1000, Easing.EaseInOutCubic)

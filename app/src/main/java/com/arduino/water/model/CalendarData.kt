@@ -9,15 +9,15 @@ data class CalendarData(
     val year : Int,
     val month : Int,
     val day : Int,
-    val laundry : Int,
-    val bath : Int,
-    val kitchen : Int,
+    val laundry : Float,
+    val bath : Float,
+    val kitchen : Float,
     val totalWeekWater : Int?,
     val visible : Boolean
 ){
-    fun getTotalWater() : Int = laundry+bath+kitchen
+    fun getTotalWater() : Float = (laundry+bath+kitchen)
 
-    fun getTotalWaterDialog() : String = "총 ${getTotalWater()}L"
+    fun getTotalWaterDialog() : String = "총 ${getTotalWater().toInt()}L"
 
     fun getDate() : String{
         val week = when(Utils.getDateDay(String.format("%d%s%s", year, Utils.dateText(month), Utils.dateText(day)), "yyyyMMdd")){
@@ -42,7 +42,7 @@ data class CalendarData(
         val total = margin + max
         val plus = total % 10
 
-        return total + (10-plus)
+        return (total + (10-plus)).toInt()
     }
 
     fun getFirstValue() : Int = ((getMaxValue()/3F)*1).toInt()
@@ -50,11 +50,17 @@ data class CalendarData(
     fun getSecondValue() : Int = ((getMaxValue()/3F)*2).toInt()
 
 
-    fun getWaterText() : String = "${laundry+bath+kitchen}L"
+    fun getWaterText() : String = "${(laundry+bath+kitchen).toInt()}L"
 
     fun getTotalWaterText() : String = "${totalWeekWater}L"
 
     fun nowDay() : Boolean = Utils.getYear() == year && Utils.getMonth() == month && Utils.getDay() == day
+
+    fun getLaundryText() : String = if(laundry%1 == 0F) laundry.toInt().toString() else laundry.toString()
+
+    fun getBathText() : String = if(bath%1 == 0F) bath.toInt().toString() else bath.toString()
+
+    fun getKitchenText() : String = if(kitchen%1 == 0F) kitchen.toInt().toString() else kitchen.toString()
 }
 
 data class BeforeCalendarData(
@@ -71,9 +77,9 @@ data class WaterUsageData(
     @SerializedName("day")
     val day : Int,
     @SerializedName("laundry")
-    val laundry : Int,
+    val laundry : Float,
     @SerializedName("kitchen")
-    val kitchen : Int,
+    val kitchen : Float,
     @SerializedName("bath")
-    val bath : Int
+    val bath : Float
 )

@@ -173,7 +173,7 @@
             android:textSize="14dp"
             android:textColor="@color/graph_text"
             android:layout_marginStart="4dp"
-            android:text="@{Integer.toString(vm.calendarData.kitchen)}"
+            android:text="@{vm.calendarData.kitchenText}"
             />
 
         <TextView
@@ -185,7 +185,7 @@
             android:textSize="14dp"
             android:textColor="@color/graph_text"
             android:layout_marginStart="4dp"
-            android:text="@{Integer.toString(vm.calendarData.laundry)}"
+            android:text="@{vm.calendarData.laundryText}"
             />
 
         <TextView
@@ -197,7 +197,7 @@
             android:textSize="14dp"
             android:textColor="@color/graph_text"
             android:layout_marginStart="4dp"
-            android:text="@{Integer.toString(vm.calendarData.bath)}"
+            android:text="@{vm.calendarData.bathText}"
             />
 
 

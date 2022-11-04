@@ -89,9 +89,9 @@ class MainViewModel : BaseViewModel() {
                         i,
                         j,
                         // 0 ~ 200 랜덤
-                        Random().nextInt(200),
-                        Random().nextInt(200),
-                        Random().nextInt(200)
+                        (Random().nextInt(200)).toFloat(),
+                        (Random().nextInt(200)).toFloat(),
+                        (Random().nextInt(200)).toFloat()
                     )
                 )
             }

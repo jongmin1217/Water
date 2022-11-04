@@ -38,7 +38,7 @@ class CalendarFragment(
         initData()
     }
 
-    fun initData(){
+    private fun initData(){
         viewModel.data = data
         viewModel.initCalendar()
     }
