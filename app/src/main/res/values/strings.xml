@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Water</string>
+    <string name="calendar">달력</string>
+    <string name="home">홈</string>
+    <string name="water_info">오늘 사용한 물의 양으로\n올림픽 규격 수영장🏊을\nn번 채울 수 있어요!</string>
+
+    <string formatted="false" name="date">%d년 %d월</string>
+
+    <string name="month_total_water">월별 누적 사용량</string>
+    <string name="before_month_water">지난 달 대비</string>
+    <string name="month_total_price">수도 요금</string>
+    <string name="calendar_bar_text">주별 누적 사용량 :</string>
+
+
+    <string name="laundry">세탁기👕</string>
+    <string name="bath">목욕용🛁</string>
+    <string name="kitchen">싱크대🚰</string>
+
+    <string name="zero">0</string>
+</resources>

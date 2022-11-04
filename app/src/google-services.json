@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "634177346756",
+    "firebase_url": "https://water-arduino-default-rtdb.firebaseio.com",
+    "project_id": "water-arduino",
+    "storage_bucket": "water-arduino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634177346756:android:0869141f640450a0cefd91",
+        "android_client_info": {
+          "package_name": "com.arduino.water"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634177346756-ue99193sacubirludcaojfafnaklu8cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arduino.water",
+            "certificate_hash": "d41d80926c16e52bc1dedd78ba98072afa2c8b32"
+          }
+        },
+        {
+          "client_id": "634177346756-ka4okf8rs0iab2f3q5ut5pg5kv4g2m7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc0UrhAI3YCPIl4wKuBCbG4JoEGjqLpXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634177346756-ka4okf8rs0iab2f3q5ut5pg5kv4g2m7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
